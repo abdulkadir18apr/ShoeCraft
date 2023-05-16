@@ -1,0 +1,17 @@
+.heading{
+    display: block;}
+.heading-container{
+    display: inline-block;
+    background-color: #643843;
+    padding:0rem 2rem;
+    line-height: 2rem;
+    border-top-left-radius:10px;
+    border-bottom-right-radius:10px;
+    letter-spacing: 3px;
+
+}
+.heading-container h1{
+    color:white;
+    font-size: 20px;
+    font-weight: 800;
+}

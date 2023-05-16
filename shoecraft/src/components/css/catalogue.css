@@ -1,0 +1,62 @@
+.catalogue{
+    display: flex;
+    width:100%;
+    justify-content: space-evenly;
+    background-color: #1f2937;
+    height: 10rem;
+}
+.screen img{
+    width:5rem;
+    padding:1rem;
+    background-color: #1f2937
+}
+ .arrowIcons{
+    position: relative;
+    top:2.5rem;
+    cursor:pointer;
+    font-size: 1rem;
+    color: whitesmoke;
+}
+.left{
+    left:1rem;
+
+}
+.right{
+    right: 1rem;
+
+}
+.catalogue .screen{
+    display: none;
+    transition: transform 0.3 ease;
+}
+
+.catalogue .active{
+    display: flex;
+    width:100%;
+    justify-content: space-evenly;
+}
+.collection{
+    display:flex;
+    flex-direction: column;
+    color:white;
+    background-color: #1f2937;
+
+}
+
+
+@media screen and (min-width:678px) {
+    .catalogue{
+        height:15rem;
+    }
+    .screen img{
+        width:12rem;
+       
+
+    }
+    .arrowIcons{
+        font-size: 3rem;
+        top:6rem;
+  
+    }
+    
+}

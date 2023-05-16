@@ -1,0 +1,9 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    background-color: #fff;
+    opacity: 1;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #fff 24px ), repeating-linear-gradient( #cbcbcb55, #cbcbcb );
+
+}

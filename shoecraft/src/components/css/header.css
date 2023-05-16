@@ -1,0 +1,49 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    padding:2rem 2rem
+
+}
+
+.header img{
+    width:100%;
+    border-radius: 20px;
+}
+
+.description{
+    align-self: center;
+
+}
+.description h1{
+    color:#65737A;
+    
+}
+.description p{
+    color:#65737A;
+    line-height: 1.5rem;
+
+}
+
+
+
+
+
+@media screen and (min-width:1024px){
+    
+}
+
+
+@media screen and (min-width:678px){
+    .header{
+        flex-direction: row;
+       
+     }
+    .header img{
+        width:40%;
+
+    }
+    .description p{
+        line-height: 1.75rem;
+    }
+    
+}
