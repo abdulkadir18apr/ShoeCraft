@@ -1,0 +1,74 @@
+.filterContainer{
+    display: flex;
+}
+.filters{
+    display: none;
+   
+}
+.activefilters{
+    display: flex;
+    flex-direction: column;
+    background-color: #d1d5db;
+    
+ 
+    
+}
+
+.filter_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filter_header button{
+    background-color: inherit;
+    width:3rem;
+    padding: 8px;
+    font-size: 600;
+    cursor: pointer;
+    border:none;
+    border-radius: 10px;
+}
+.filterBtn button{
+    width:5rem;
+    background-color:#4E6E81;
+    border:none;
+    padding: 10px;
+    border-left: 2px solid #EDF1D6;
+    cursor:pointer;
+    font-weight: 600;
+    color:#EDF1D6;
+}
+.filterBtn button:first-of-type{
+    border:none;
+}
+.typeBtn label{
+    display: block;
+
+    font-weight: 600;
+    text-align: center;
+}
+.fiterIcon{
+    color:#4E6E81;
+}
+.filterDiv .filterIcon{
+    color: #4E6E81;
+  
+    cursor: pointer;
+}
+
+
+@media screen and (min-width:678px) {
+    .filters{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: #d1d5db;
+        padding-bottom: 1rem;
+        padding: 1rem;
+        width: 100%;;
+    }
+    .filterDiv{
+        display: none;
+    }
+    
+}

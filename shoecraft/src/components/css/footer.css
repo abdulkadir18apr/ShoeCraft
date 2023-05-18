@@ -2,6 +2,10 @@
     background-color: #d1d5db;
     font-weight: 800;
     font-size: large;
+   
+}
+.footer p{
+    margin-block-start: 0;
 }
 .footer .icons{
     display: flex;

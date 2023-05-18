@@ -1,0 +1,66 @@
+.productCard{
+    position: relative;
+
+    width:15rem;
+
+    justify-content: center;
+    align-self: flex-start;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
+
+}
+
+.productImage img{
+    width:100%;
+    height: 10rem;
+
+}
+.patch{
+width:100%;
+display: flex;
+justify-content: space-between;
+position: absolute;
+top:-1%;
+z-index: 1;
+}
+
+.productCategory{
+    display: inline-block;
+    background-color: #025464;
+    color: white;
+    padding:3px;
+
+}
+.productGender{
+    display: inline-block;
+    background-color: #025464;
+    color:white;
+    padding:3px;
+
+}
+.productDetails{
+    line-height: 1.2rem;
+}
+.productDetails :first-child{
+    font-weight: 600;
+}
+.productDetails :nth-child(2){
+    color:gray;
+    font-weight: 600;
+}
+.productDetails :last-child{
+    font-weight: 800;
+    color:red;
+
+}
+.addToCartBtn{
+    width: 100%;
+    font-size: large;
+    font-weight: 600;
+    background-color: #27C8A4;
+    border:none;
+    color:white;
+    padding: 5px;
+    cursor: pointer;
+
+}

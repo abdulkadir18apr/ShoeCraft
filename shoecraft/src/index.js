@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './fontawesome';
+import { ProductsProvider } from './context/ProductContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ProductsProvider>
     <App />
+    </ProductsProvider>
+  
   </React.StrictMode>
 );
 
