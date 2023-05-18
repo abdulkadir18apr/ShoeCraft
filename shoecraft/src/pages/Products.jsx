@@ -13,7 +13,7 @@ import { usePagination } from '../hooks/pagination';
 
 
 export  function Products() {
-    const {productState,setCurrentPage,loading}=useProductContext();
+    const {productState,setCurrentPage}=useProductContext();
       const [totalPages,startPageIndex,endPageIndex,currenPageIndex,displayPage]=usePagination(8,productState.products.length);
 
 
@@ -35,11 +35,11 @@ export  function Products() {
 
             </div>
             <div className="productList">
-          {  loading && <p>Loading.....</p>}
+            {  productState.loading && <p>Loading.....</p>}
                 {
-               
-                   !loading &&  productState.currentPage.map(({name,brand,category,gender,imageURL,price,rating})=>(
-                        <ProductCard productName={name} productBrand={brand} productCategory={category} productGender={gender} productImage={imageURL} productPrice={price} productRating={rating}/>
+
+                   !productState.loading &&  productState.currentPage.map((item)=>(
+                        <ProductCard productName={item?.name} productBrand={item?.brand} productCategory={item?.category} productGender={item?.gender} productImage={item?.imageURL} productPrice={item?.price} productRating={item?.rating}/>
                     ))
 
                 }

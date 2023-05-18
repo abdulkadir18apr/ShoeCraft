@@ -39,7 +39,7 @@ export const ProductsProvider=({children})=>{
     },[])
 
     return(
-        <ProductContext.Provider value={{productState,setCurrentPage,filteredProduct}}>
+        <ProductContext.Provider value={{productState,setCurrentPage}}>
             {children}
         </ProductContext.Provider>
     )
