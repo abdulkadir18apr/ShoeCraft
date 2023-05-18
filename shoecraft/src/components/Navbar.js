@@ -11,8 +11,7 @@ export const Navbar=()=>{
             <div className="logo">
                 <img src={logo} alt="logo" />
                 <p className='logo-text'>ShoeCraft</p>
-            </div>
-                
+            </div> 
             </NavLink>
 
             <div className="searchBar">

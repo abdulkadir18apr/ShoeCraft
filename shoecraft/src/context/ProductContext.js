@@ -8,21 +8,25 @@ export const ProductContext=createContext();
 export const ProductsProvider=({children})=>{
     const [productState,dispatch]=useReducer(ProductReducer,{
         products:[],
-        currentPage:[]
+        currentPage:[],
+        loading:true,
+        filters:{category:[],maxPrice:250,footwearType:[],rating:"All",sort:-1}
     })
 
-    const[loading,setLoading]=useState(true);
+
+
+
+
+
 
     
     const getProductsData=async()=>{
         const json=await getProducts();
         if(json.success){
             dispatch({type:'setProducts',payload:json.products});
-            setLoading(false)
         }
         else{
             console.log(json);
-            setLoading(false)
         }
 
     }
@@ -32,11 +36,10 @@ export const ProductsProvider=({children})=>{
 
     useEffect(()=>{
         getProductsData();
-       
     },[])
 
     return(
-        <ProductContext.Provider value={{productState,setCurrentPage}}>
+        <ProductContext.Provider value={{productState,setCurrentPage,filteredProduct}}>
             {children}
         </ProductContext.Provider>
     )
