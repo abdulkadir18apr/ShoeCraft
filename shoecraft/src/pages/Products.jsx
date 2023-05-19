@@ -13,17 +13,24 @@ import { usePagination } from '../hooks/pagination';
 
 
 export  function Products() {
-    const {productState,setCurrentPage,loading}=useProductContext();
-      const [totalPages,startPageIndex,endPageIndex,currenPageIndex,displayPage]=usePagination(8,productState.products.length);
+    const {productState,setCurrentPage,filteredProducts}=useProductContext();
+    const [totalPages,startPageIndex,endPageIndex,currenPageIndex,displayPage]=usePagination(8,filteredProducts.length);
 
 
     const pageChangeHandler=(e,value)=>{
         displayPage(value);
     }
+
+
     
     useEffect(()=>{
-        setCurrentPage(startPageIndex,endPageIndex)
+        setCurrentPage(startPageIndex,endPageIndex);
     },[startPageIndex,endPageIndex]);
+
+    useEffect(()=>{
+        setCurrentPage(startPageIndex,endPageIndex);
+        displayPage(1)
+    },[totalPages,JSON.stringify(filteredProducts)])
   
 
 
@@ -35,11 +42,11 @@ export  function Products() {
 
             </div>
             <div className="productList">
-          {  loading && <p>Loading.....</p>}
+            {  productState.loading && <p>Loading.....</p>}
                 {
-               
-                   !loading &&  productState.currentPage.map(({name,brand,category,gender,imageURL,price,rating})=>(
-                        <ProductCard productName={name} productBrand={brand} productCategory={category} productGender={gender} productImage={imageURL} productPrice={price} productRating={rating}/>
+
+                   !productState.loading &&  productState.currentPage.map((item)=>(
+                        <ProductCard productName={item?.name} productBrand={item?.brand} productCategory={item?.category} productGender={item?.gender} productImage={item?.imageURL} productPrice={item?.price} productRating={item?.rating}/>
                     ))
 
                 }

@@ -2,28 +2,30 @@ import { createContext, useContext, useEffect, useReducer, useState } from "reac
 import { ProductReducer } from "../reducers/ProductReducer";
 import { getProducts } from "../apiCalls/products";
 import { usePagination } from "../hooks/pagination";
+import { applyFilters } from "./filters";
 
 export const ProductContext=createContext();
 
 export const ProductsProvider=({children})=>{
-    const [productState,dispatch]=useReducer(ProductReducer,{
+    const [productState,productDispatch]=useReducer(ProductReducer,{
         products:[],
         currentPage:[],
         loading:true,
-        filters:{category:[],maxPrice:250,footwearType:[],rating:"All",sort:-1}
+        filters:{category:[],price:250,footwearType:[],rating:-1,sort:-1}
     })
 
 
+    const filteredProducts=applyFilters(productState.products,productState.filters);
+    console.log(filteredProducts)
 
 
 
+   
 
-
-    
     const getProductsData=async()=>{
         const json=await getProducts();
         if(json.success){
-            dispatch({type:'setProducts',payload:json.products});
+            productDispatch({type:'setProducts',payload:json.products});
         }
         else{
             console.log(json);
@@ -31,7 +33,7 @@ export const ProductsProvider=({children})=>{
 
     }
     const setCurrentPage=(startIndex,endIndex)=>{
-        dispatch({type:'setCurrentPage',payload:{startIndex,endIndex}})
+        productDispatch({type:'setCurrentPage',payload:{startIndex,endIndex,filteredProducts}})
     }
 
     useEffect(()=>{
@@ -39,11 +41,12 @@ export const ProductsProvider=({children})=>{
     },[])
 
     return(
-        <ProductContext.Provider value={{productState,setCurrentPage,filteredProduct}}>
+        <ProductContext.Provider value={{productState,setCurrentPage,productDispatch,filteredProducts}}>
             {children}
         </ProductContext.Provider>
     )
 
 }
+
 
 export const useProductContext=()=>useContext(ProductContext);

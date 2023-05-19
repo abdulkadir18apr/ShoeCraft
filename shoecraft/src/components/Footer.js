@@ -12,7 +12,6 @@ export  function Footer() {
         <a href="https://twitter.com/abdulq314" target="_blank"><FontAwesomeIcon icon="fa-brands fa-twitter" size='2xl' color="skyblue" /></a>
         <a href=""  target="_blank"><FontAwesomeIcon icon="fa-brands fa-instagram" size='2xl' color='red' /></a>
         <a href="https://www.github.com/abdulkadir18apr" target="_blank"><FontAwesomeIcon icon="fa-brands fa-github" size='2xl' color='blue' /></a>
-
         </div>
    
     </div>
