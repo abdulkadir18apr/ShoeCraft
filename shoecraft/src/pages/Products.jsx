@@ -13,17 +13,24 @@ import { usePagination } from '../hooks/pagination';
 
 
 export  function Products() {
-    const {productState,setCurrentPage}=useProductContext();
-      const [totalPages,startPageIndex,endPageIndex,currenPageIndex,displayPage]=usePagination(8,productState.products.length);
+    const {productState,setCurrentPage,filteredProducts}=useProductContext();
+    const [totalPages,startPageIndex,endPageIndex,currenPageIndex,displayPage]=usePagination(8,filteredProducts.length);
 
 
     const pageChangeHandler=(e,value)=>{
         displayPage(value);
     }
+
+
     
     useEffect(()=>{
-        setCurrentPage(startPageIndex,endPageIndex)
+        setCurrentPage(startPageIndex,endPageIndex);
     },[startPageIndex,endPageIndex]);
+
+    useEffect(()=>{
+        setCurrentPage(startPageIndex,endPageIndex);
+        displayPage(1)
+    },[totalPages,JSON.stringify(filteredProducts)])
   
 
 

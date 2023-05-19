@@ -7,9 +7,26 @@ export const  ProductReducer=(state,action)=>{
         case 'setCurrentPage':
             const currentPageProducts=[];
             for(let i=payload.startIndex;i<=payload.endIndex;i++){
-                currentPageProducts.push(state.products[i]);
+                currentPageProducts.push(payload.filteredProducts[i]);
             }
             return {...state,currentPage:currentPageProducts,loading:false};
+        case 'addCategoryFilter':
+            return {...state,filters:{...state.filters,category:[...state.filters.category,payload]}};
+        case 'removeCategoryFilter':
+            return {...state,filters:{...state.filters,category:[...state.filters.category.filter((filter)=>filter!==payload)]}};
+        case "setPriceFilter":
+            return {...state,filters:{...state.filters,price:payload}};
+        case "addFootwearTypeFilter":
+            return {...state,filters:{...state.filters,footwearType:[...state.filters.footwearType,payload]}}
+        case "removeFootwearTypeFilter":
+            return {...state,filters:{...state.filters,footwearType:[...state.filters.footwearType.filter((type)=>type!==payload)]}}
+        case "setRatingFilter":
+            return {...state, filters:{...state.filters,rating:payload}}
+        case "setSortingFilter":
+            return {...state,filters:{...state.filters,sort:payload}}
+        case "clearFilters":
+            return {...state,filters:{category:[],sort:-1,rating:-1,footwearType:[],price:250}}
+
         default:
             return state;
     }
