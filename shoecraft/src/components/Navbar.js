@@ -1,10 +1,32 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from "./img/shoeCraftNav.png"
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 import "./css/navbar.css"
+import { useAuthContext } from '../context/AuthContext';
+import { useEffect, useState } from 'react';
+import { useProductContext } from '../context/ProductContext';
 
 export const Navbar=()=>{
+    const {isLogin,logoutUser}=useAuthContext();
+    const {productDispatch}=useProductContext();
+    const navigate=useNavigate();
+    const[searchQuery,setSearchQuery]=useState("")
+    const logoutClickHandler=()=>{
+
+        if(isLogin){
+            logoutUser();
+        }
+    }
+    const searchHandler=(e)=>{
+        setSearchQuery(e.target.value);
+
+        navigate("/products");
+    }
+    useEffect(()=>{
+        productDispatch({type:"setSearchFilter",payload:searchQuery})
+    },[searchQuery])
+
     return(
         <div className="Navbar">
             <NavLink to="/">
@@ -16,15 +38,13 @@ export const Navbar=()=>{
 
             <div className="searchBar">
                 <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" className='searchIcon' />
-                <input type="text" placeholder='search products' />
-
+                <input type="text" placeholder='search products' onChange={(e)=>searchHandler(e)} />
             </div>
             <div className="navigation">
             <NavLink to="/products"><FontAwesomeIcon icon="fa-solid fa-store" /></NavLink>
-            <NavLink><FontAwesomeIcon icon="fa-solid fa-cart-shopping" /></NavLink>
-            <NavLink><FontAwesomeIcon icon="fa-solid fa-heart" /></NavLink>
-         
-            <NavLink><button className='loginBtn'>Login</button></NavLink>
+            <NavLink to="/cart"><FontAwesomeIcon icon="fa-solid fa-cart-shopping" /></NavLink>
+            <NavLink to="/wishlist"><FontAwesomeIcon icon="fa-solid fa-heart" /></NavLink>
+            <NavLink to="/login"><button onClick={logoutClickHandler} className='loginBtn'>{!isLogin?"Login":"Logout"}</button></NavLink>
             </div>
         </div>
     )

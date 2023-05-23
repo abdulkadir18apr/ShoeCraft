@@ -1,0 +1,26 @@
+.wishlist{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+   
+    justify-content: flex-start;
+    gap:2rem;
+    align-items: center;
+}
+.wishlist-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:center;
+    min-height:90vh;
+}
+.WishlistHeading{
+    display: inline-block;
+    background-color: #E3F2C1;
+    font-size: 2rem;
+    padding:1rem;
+    border-radius: 10px;;
+    color: #643843;
+
+}
+

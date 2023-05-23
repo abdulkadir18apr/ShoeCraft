@@ -6,7 +6,6 @@ import Pagination from '@mui/material/Pagination';
 
 import "./css/products.css"
 import { ProductCard } from '../components/ProductCard'
-import { Footer } from '../components/Footer'
 import { useProductContext } from '../context/ProductContext';
 import { usePagination } from '../hooks/pagination';
 
@@ -25,11 +24,13 @@ export  function Products() {
     
     useEffect(()=>{
         setCurrentPage(startPageIndex,endPageIndex);
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     },[startPageIndex,endPageIndex]);
 
     useEffect(()=>{
         setCurrentPage(startPageIndex,endPageIndex);
         displayPage(1)
+       //eslint-disable-next-line react-hooks/exhaustive-deps
     },[totalPages,JSON.stringify(filteredProducts)])
   
 
@@ -46,7 +47,7 @@ export  function Products() {
                 {
 
                    !productState.loading &&  productState.currentPage.map((item)=>(
-                        <ProductCard productName={item?.name} productBrand={item?.brand} productCategory={item?.category} productGender={item?.gender} productImage={item?.imageURL} productPrice={item?.price} productRating={item?.rating}/>
+                        <ProductCard key={item?._id} productId={item?._id} productName={item?.name} productBrand={item?.brand} productCategory={item?.category} productGender={item?.gender} productImage={item?.imageURL} productPrice={item?.price} productRating={item?.rating}/>
                     ))
 
                 }
@@ -56,9 +57,9 @@ export  function Products() {
            
 
         </div>
-        {/* <Footer/> */}
+
         <div className='pagination'>
-        <Pagination count={totalPages}  onChange={(e,value)=>pageChangeHandler(e,value)}/>
+        <Pagination count={totalPages} color='secondary' onChange={(e,value)=>pageChangeHandler(e,value)}/>
 
         </div>
        

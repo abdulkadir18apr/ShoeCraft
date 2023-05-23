@@ -79,12 +79,22 @@ const sortingFilter=(products,sortingType)=>{
     }
 }
 
+const SearchFilter=(products,searchQuery)=>{
+    console.log(searchQuery)
+    if(searchQuery===""){
+        return products;        
+    }
+    return products.filter((product)=>product.name.includes(searchQuery)|| product.brand.includes(searchQuery))
+
+}
+
 
  export const applyFilters=(products,filters)=>{
     let filteredProducts=categoryFilter([...products],filters.category);
     filteredProducts= priceFilter([...filteredProducts],filters.price); 
     filteredProducts=footwearTypeFilter([...filteredProducts],filters.footwearType);
     filteredProducts=ratingFilter([...filteredProducts],filters.rating);
-    filteredProducts=sortingFilter([...filteredProducts],filters.sort)
+    filteredProducts=sortingFilter([...filteredProducts],filters.sort);
+    filteredProducts=SearchFilter([...filteredProducts],filters.searchQuery);
     return filteredProducts;
 }

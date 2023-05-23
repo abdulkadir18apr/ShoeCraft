@@ -5,14 +5,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './fontawesome';
 import { ProductsProvider } from './context/ProductContext';
+import { AuthProvider } from './context/AuthContext';
+import { BrowserRouter } from 'react-router-dom';
+import { WishlistProvider } from './context/WishlistContext';
+import { CartProvider } from './context/CartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ProductsProvider>
-    <App />
-    </ProductsProvider>
-  
+
+
+    <BrowserRouter>
+      <AuthProvider>
+        <ProductsProvider>
+          <CartProvider>
+          <WishlistProvider>
+          <App />
+          </WishlistProvider>
+          </CartProvider>
+     
+        </ProductsProvider>
+      </AuthProvider>
+    </BrowserRouter>
+
   </React.StrictMode>
 );
 

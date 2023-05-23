@@ -24,8 +24,12 @@ export const  ProductReducer=(state,action)=>{
             return {...state, filters:{...state.filters,rating:payload}}
         case "setSortingFilter":
             return {...state,filters:{...state.filters,sort:payload}}
+        case "setSearhFilter":
+            console.log("payload")
+            return {...state,filters:{...state.filters,searchQuery:payload}}
         case "clearFilters":
-            return {...state,filters:{category:[],sort:-1,rating:-1,footwearType:[],price:250}}
+            return {...state,filters:{category:[],sort:-1,rating:-1,footwearType:[],price:250,searchQuery:""}}
+        
 
         default:
             return state;

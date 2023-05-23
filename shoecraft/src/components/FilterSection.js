@@ -5,15 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useProductContext } from '../context/ProductContext'
 
 export  function FilterSection() {
+    const {productState:{filters}}=useProductContext();
     const [activeFilter,setActiveFilter]=useState(true)
     const{productDispatch}=useProductContext();
-    const [menBtn,setMenBtn]=useState(false);
-    const [womenBtn,setWomenBtn]=useState(false);
-    const [kidsBtn,setKidsBtn]=useState(false);
-    const [priceInput,setPriceInput]=useState(250);
-    const [footwearType,setFootwearType]=useState({RUNNING:false,FORMAL:false,CASUAL:false})
-    const [rating,setRating]=useState(null);
-    const [sorting,setSorting]=useState(null);
+    const [menBtn,setMenBtn]=useState(filters.category.includes("MEN"));
+    const [womenBtn,setWomenBtn]=useState(filters.category.includes("WOMEN"));
+    const [kidsBtn,setKidsBtn]=useState(filters.category.includes("KIDS"));
+    const [priceInput,setPriceInput]=useState(filters.price);
+    const [footwearType,setFootwearType]=useState({RUNNING:filters.footwearType.includes("RUNNING"),FORMAL:filters.footwearType.includes("FORMAL"),CASUAL:filters.footwearType.includes("CASUAL")})
+    const [rating,setRating]=useState(filters.rating.toString());
+    const [sorting,setSorting]=useState(filters.sort.toString());
 
     const categoryFilterClickHandler=(e)=>{
         if(e.target.value==="MEN"){
@@ -159,7 +160,7 @@ export  function FilterSection() {
 
         <div className='typeBtn'>
             <label htmlFor="">
-                <input type="radio" name="sortInput" id="" value="0" checked={sorting==="0"} onChange={sortingFilterHandler} />price-Low-to-High
+                <input type="radio" name="sortInput" id="" value={"0"} checked={sorting==="0"} onChange={sortingFilterHandler} />price-Low-to-High
             </label>
             <label htmlFor="">
                 <input type="radio" name="sortInput" id="" value={"1"} checked={sorting==="1"} onChange={sortingFilterHandler} />price-High-to-Low
