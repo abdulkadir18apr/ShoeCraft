@@ -8,11 +8,15 @@ import "./css/products.css"
 import { ProductCard } from '../components/ProductCard'
 import { useProductContext } from '../context/ProductContext';
 import { usePagination } from '../hooks/pagination';
+import { useAuthContext } from '../context/AuthContext';
+import { toast } from 'react-toastify';
+import { Loader } from '../components/Loader';
 
 
 
 export  function Products() {
     const {productState,setCurrentPage,filteredProducts}=useProductContext();
+    const {isLogin,userName}=useAuthContext();
     const [totalPages,startPageIndex,endPageIndex,currenPageIndex,displayPage]=usePagination(8,filteredProducts.length);
 
 
@@ -20,8 +24,6 @@ export  function Products() {
         displayPage(value);
     }
 
-
-    
     useEffect(()=>{
         setCurrentPage(startPageIndex,endPageIndex);
         //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -32,6 +34,14 @@ export  function Products() {
         displayPage(1)
        //eslint-disable-next-line react-hooks/exhaustive-deps
     },[totalPages,JSON.stringify(filteredProducts)])
+
+    useEffect(()=>{
+        if(isLogin){
+           
+            toast(`Welcome ${userName}`);
+        }
+          //eslint-disable-next-line react-hooks/exhaustive-deps
+    },[isLogin])
   
 
 
@@ -43,7 +53,7 @@ export  function Products() {
 
             </div>
             <div className="productList">
-            {  productState.loading && <p>Loading.....</p>}
+            {  productState.loading && <Loader/>}
                 {
 
                    !productState.loading &&  productState.currentPage.map((item)=>(

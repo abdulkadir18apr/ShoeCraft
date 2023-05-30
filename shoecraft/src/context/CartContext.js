@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { fetchCart } from "../apiCalls/products";
 import { useAuthContext } from "./AuthContext";
+import { toast } from "react-toastify";
 
 export const CartContext=createContext();
 
@@ -32,11 +33,11 @@ export const CartProvider=({children})=>{
         if(isLogin){
             const res=await fetchCart();
             if(res.success){
-                console.log(res)
+                
                 setCart(()=>res.cart.products);
             }
             else{
-                alert("cart not fetch")
+                toast("cart not fetch")
             }
 
         }
@@ -44,7 +45,11 @@ export const CartProvider=({children})=>{
     }
 
     useEffect(()=>{
-        fetchItemFromCart();
+        if(isLogin){
+            fetchItemFromCart();
+
+        }
+       
     },[isLogin])
 
    return(

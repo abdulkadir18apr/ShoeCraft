@@ -80,11 +80,15 @@ const sortingFilter=(products,sortingType)=>{
 }
 
 const SearchFilter=(products,searchQuery)=>{
-    console.log(searchQuery)
     if(searchQuery===""){
         return products;        
     }
-    return products.filter((product)=>product.name.includes(searchQuery)|| product.brand.includes(searchQuery))
+    return(products.filter((product)=>{
+        const productName=product.name.toLowerCase();
+        const productBrand=product.brand.toLowerCase();
+        const searchQueryLower=searchQuery.toLowerCase();
+        return productName.includes(searchQueryLower) || productBrand.includes(searchQueryLower);
+    }));
 
 }
 
@@ -95,6 +99,6 @@ const SearchFilter=(products,searchQuery)=>{
     filteredProducts=footwearTypeFilter([...filteredProducts],filters.footwearType);
     filteredProducts=ratingFilter([...filteredProducts],filters.rating);
     filteredProducts=sortingFilter([...filteredProducts],filters.sort);
-    filteredProducts=SearchFilter([...filteredProducts],filters.searchQuery);
+     filteredProducts=SearchFilter([...filteredProducts],filters.searchQuery);
     return filteredProducts;
 }

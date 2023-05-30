@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import  "./css/cartItem.css"
 import { deletetFromCart, updateCart } from '../apiCalls/products'
 import { useCartContext } from '../context/CartContext';
+import { toast } from 'react-toastify';
 
 
 
@@ -16,6 +17,10 @@ export  function CartItem({cartProduct}) {
         const res=await deletetFromCart(cartProduct.product._id);
         if(res.success){
             removeItemFromCart(cartProduct.product._id);
+            toast("Item Removed From Cart");
+        }
+        else{
+            toast("Something Went Wrong");
         }
 
     }

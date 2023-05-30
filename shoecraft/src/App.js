@@ -9,6 +9,12 @@ import { Login } from './pages/Login';
 import { RequiresAuth } from './components/RequiresAuth';
 import { Wishlist } from './pages/Wishlist';
 import { Cart } from './pages/Cart';
+import { ToastContainer } from 'react-toastify';
+
+
+import 'react-toastify/dist/ReactToastify.css';
+import "../src/pages/css/toastify-custom.css";
+
 
 
 
@@ -35,7 +41,9 @@ function App() {
         </RequiresAuth>
         
         }/>
+       
       </Routes>
+      <ToastContainer position="bottom-right" autoClose={2000}  newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover/>
 
     </div>
   );

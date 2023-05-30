@@ -6,11 +6,12 @@ import "./css/login.css";
 import { useState } from "react";
 import { userLogin, userSignup } from "../apiCalls/Authentication";
 import { useAuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 export const Login=({isLogin})=>{
 
     const [credentials,setCredentials]=useState({});
-    const {loginUser}=useAuthContext();
+    const {loginUser,userName}=useAuthContext();
     const location=useLocation();
 
     const userInputChangeHandler=(e)=>{
@@ -24,8 +25,6 @@ export const Login=({isLogin})=>{
             if(res.success){
                 const from=location?.state?.from?.pathname || "/products"
                 loginUser(res.user.name,res.authToken,from);
-             
-
             }
             else{
                 alert("something went Wrong");

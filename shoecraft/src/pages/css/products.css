@@ -17,3 +17,10 @@
 .filterNav{
     display: flex;
 }
+
+@media screen and (min-width:678px){
+    .productList{
+        gap:4rem;
+    }
+    
+}

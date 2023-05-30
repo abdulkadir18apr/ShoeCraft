@@ -1,0 +1,32 @@
+/* Customize toast notification container */
+.Toastify__toast-container {
+    z-index: 9999;
+  }
+  
+  /* Customize toast notification */
+  .Toastify__toast {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Customize toast notification message */
+  .Toastify__toast-body {
+    font-size: 14px;
+    padding: 12px;
+  }
+  
+  /* Customize toast notification close button */
+  .Toastify__close-button {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 1;
+  }
+  
+  /* Customize toast notification progress bar */
+  .Toastify__progress-bar {
+    background-color: white;
+  }
+  

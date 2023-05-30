@@ -11,16 +11,11 @@ export const ProductsProvider=({children})=>{
         products:[],
         currentPage:[],
         loading:true,
-        filters:{category:[],price:250,footwearType:[],rating:-1,sort:-1}
+        filters:{category:[],price:250,footwearType:[],rating:-1,sort:-1,searchQuery:""}
     })
 
 
     const filteredProducts=applyFilters(productState.products,productState.filters);
-    console.log(filteredProducts)
-
-
-
-   
 
     const getProductsData=async()=>{
         const json=await getProducts();

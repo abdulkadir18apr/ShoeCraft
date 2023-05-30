@@ -10,8 +10,9 @@ export const AuthProvider=({children})=>{
 
     const navigate=useNavigate();
 
-    const loginUser=(userName,AuthToken,redirectPath="/products")=>{
-        setuserName(()=>userName);
+    const loginUser=(name,AuthToken,redirectPath="/products")=>{
+        console.log(name);
+        setuserName(()=>name);
         setisLogin(()=>true);
         localStorage.setItem('auth-token',AuthToken);
         navigate(redirectPath);
@@ -25,7 +26,7 @@ export const AuthProvider=({children})=>{
     }
 
     return(
-        <AuthContext.Provider value={{isLogin,loginUser,logoutUser}}>
+        <AuthContext.Provider value={{isLogin,loginUser,logoutUser,userName}}>
             {children}
         </AuthContext.Provider>
     )

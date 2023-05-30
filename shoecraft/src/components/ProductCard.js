@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { addToCart, addToWishlist, deleteFromWishlist } from '../apiCalls/products';
 import { useWishlistContext } from '../context/WishlistContext';
 import { useCartContext } from '../context/CartContext';
+import { toast } from 'react-toastify';
 
 export  function ProductCard({productId,productName,productCategory,productGender,productImage,productBrand,productPrice,productRating}) {
   const product={_id:productId,name:productName,category:productCategory,brand:productBrand,price:productPrice,rating:productRating,imageURL:productImage,gender:productGender}
@@ -30,11 +31,12 @@ export  function ProductCard({productId,productName,productCategory,productGende
         //add item to favorite
         const res=await addToWishlist(productId);
         if(res.success){
+          toast("Item Added to wishlist");
           setFavorite(!isFavorite);
           addProductTowishlist(product)
         }
         else{
-          alert("something went wrong")
+          toast("something went wrong Try Login Again");
         }
        
       }
@@ -44,9 +46,10 @@ export  function ProductCard({productId,productName,productCategory,productGende
           if(res.success){
             setFavorite(!isFavorite);
             deleteProductFromWishlist(product)
+            toast("Item Removed from Wishlist");
           }
           else{
-            alert("Something went wrong");
+            toast("Something went wrong");
           }
           
         }
@@ -60,11 +63,12 @@ export  function ProductCard({productId,productName,productCategory,productGende
     }
     const res=await addToCart(e.target.value);
     if(res.success){
-      alert("Item Added TO CArt");
       addItemToCart(product);
+      toast("Item Added to Cart");
+
     }
     else{
-      console.log(res);
+      toast("Try login Again");
     }
   }
 

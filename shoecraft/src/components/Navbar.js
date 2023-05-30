@@ -24,7 +24,7 @@ export const Navbar=()=>{
         navigate("/products");
     }
     useEffect(()=>{
-        productDispatch({type:"setSearchFilter",payload:searchQuery})
+        productDispatch({type:"setSearhFilter",payload:searchQuery})
     },[searchQuery])
 
     return(
