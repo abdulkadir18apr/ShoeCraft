@@ -3,10 +3,7 @@
     align-items: center;
    
     justify-content: center;
-    background-color: #c4c4eb;
-opacity: 0.8;
-background: radial-gradient(circle, transparent 20%, #c4c4eb 20%, #c4c4eb 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #c4c4eb 20%, #c4c4eb 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#6d6d97 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #6d6d97 2px, #c4c4eb 2px) -1px 0;
-background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+    
 }
 .login{
     margin-top: 2rem;
@@ -15,7 +12,6 @@ background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
     align-items: stretch;
     flex-wrap: wrap-reverse;
      gap:2rem;
-    box-shadow: #98B4A6 0px 50px 100px -20px, #98B4A6 0px 30px 60px -30px, #98B4A6 0px -2px 6px 0px inset;
 }
 .login h1{
     color:#D6A08F

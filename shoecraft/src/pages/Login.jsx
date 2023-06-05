@@ -27,7 +27,7 @@ export const Login=({isLogin})=>{
                 loginUser(res.user.name,res.authToken,from);
             }
             else{
-                alert("something went Wrong");
+                toast("something went Wrong");
             }
 
         }
@@ -37,9 +37,8 @@ export const Login=({isLogin})=>{
                 loginUser(res.user.name,res.authToken);
             }
             else{
-                alert("something went Wrong");
+                toast("something went Wrong");
             }
-
         }
 
     }

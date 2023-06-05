@@ -15,6 +15,23 @@ export const getProducts=async()=>{
     }   
 }
 
+export const fetchProduct=async(id)=>{
+    try{
+        const res=await fetch(`https://shoe-craft-backend.vercel.app/api/products/${id}`,{
+            method:"GET",
+            headers:{
+                "Content-Type":"application/json",
+            }
+        })
+        const json=await res.json();
+        return json;
+    }
+    catch(err){
+        return err
+    }
+
+}
+
 
 export const addToWishlist=async(productId)=>{
 

@@ -11,6 +11,7 @@ import { usePagination } from '../hooks/pagination';
 import { useAuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { Loader } from '../components/Loader';
+import { Link } from 'react-router-dom';
 
 
 
@@ -57,7 +58,7 @@ export  function Products() {
                 {
 
                    !productState.loading &&  productState.currentPage.map((item)=>(
-                        <ProductCard key={item?._id} productId={item?._id} productName={item?.name} productBrand={item?.brand} productCategory={item?.category} productGender={item?.gender} productImage={item?.imageURL} productPrice={item?.price} productRating={item?.rating}/>
+              <ProductCard key={item?._id} productId={item?._id} productName={item?.name} productBrand={item?.brand} productCategory={item?.category} productGender={item?.gender} productImage={item?.imageURL} productPrice={item?.price} productRating={item?.rating}/>
                     ))
 
                 }

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import "./css/productCard.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAuthContext } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { addToCart, addToWishlist, deleteFromWishlist } from '../apiCalls/products';
 import { useWishlistContext } from '../context/WishlistContext';
 import { useCartContext } from '../context/CartContext';
@@ -85,13 +85,13 @@ export  function ProductCard({productId,productName,productCategory,productGende
     <p className='productGender'>{productGender}</p>
     </div>
     <div className="productImage">
-        <img src={productImage} alt="Product" />
+        <NavLink style={{textDecoration:"none"}}  to={`${productId}`}><img src={productImage} alt="Product" /></NavLink>
     </div>
 
     <div className="productDetails">
-    <p>{productName}</p>
+    <NavLink style={{textDecoration:"none"}} className="inactive"  to={`${productId}`}><p>{productName}</p></NavLink>
     <p>{productBrand}</p>
-    <p>${productPrice}</p>
+    <p className='price'>${productPrice}</p>
     </div>
     <div className="productrating">
         <FontAwesomeIcon icon={`fa${ratingStar[0]} fa-star`}/>
