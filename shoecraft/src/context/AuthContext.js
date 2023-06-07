@@ -1,18 +1,20 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchAddress } from "../apiCalls/address";
 
 export const AuthContext=createContext();
 
 export const AuthProvider=({children})=>{
     const isToken=localStorage.getItem('auth-token')
     const [isLogin,setisLogin]=useState(isToken?true:false);
-    const [userName,setuserName]=useState("");
+    const [addresses,setAddresses]=useState([]);
+  
 
     const navigate=useNavigate();
 
-    const loginUser=(name,AuthToken,redirectPath="/products")=>{
-        console.log(name);
-        setuserName(()=>name);
+    const loginUser=(name,email,AuthToken,redirectPath="/products")=>{
+        localStorage.setItem('userName',name);
+        localStorage.setItem('email',email);
         setisLogin(()=>true);
         localStorage.setItem('auth-token',AuthToken);
         navigate(redirectPath);
@@ -20,13 +22,23 @@ export const AuthProvider=({children})=>{
     }
     const logoutUser=()=>{
         setisLogin(()=>false);
-        setuserName(()=>"");
         localStorage.clear();
         navigate("/login");
     }
-
+    const fetchAddressFromServer=async()=>{
+        const res=await fetchAddress();
+        if(res.success){
+            setAddresses(()=>[...res.addresses])
+        }
+    }
+    useEffect(()=>{
+        if(isLogin){
+            fetchAddressFromServer();
+        }
+    },[isLogin])
+    
     return(
-        <AuthContext.Provider value={{isLogin,loginUser,logoutUser,userName}}>
+        <AuthContext.Provider value={{isLogin,loginUser,logoutUser,addresses,setAddresses}}>
             {children}
         </AuthContext.Provider>
     )

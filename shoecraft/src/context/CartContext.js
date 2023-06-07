@@ -2,12 +2,14 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { fetchCart } from "../apiCalls/products";
 import { useAuthContext } from "./AuthContext";
 import { toast } from "react-toastify";
+import { useProductContext } from "./ProductContext";
 
 export const CartContext=createContext();
 
 export const CartProvider=({children})=>{
     const [cart,setCart]=useState([]);
     const {isLogin}=useAuthContext();
+    const {loading,setLoading}=useProductContext();
 
     const addItemToCart=(item)=>{
         if(!cart.find((cartProduct)=>cartProduct.product._id.toString()===item._id)){
@@ -30,6 +32,7 @@ export const CartProvider=({children})=>{
     }
 
     const fetchItemFromCart=async()=>{
+        setLoading(true);
         if(isLogin){
             const res=await fetchCart();
             if(res.success){
@@ -39,15 +42,14 @@ export const CartProvider=({children})=>{
             else{
                 toast("cart not fetch")
             }
-
         }
+        setLoading(false);
 
     }
 
     useEffect(()=>{
         if(isLogin){
             fetchItemFromCart();
-
         }
        
     },[isLogin])

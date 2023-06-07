@@ -9,11 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useWishlistContext } from '../context/WishlistContext';
 import { useAuthContext } from '../context/AuthContext';
 import { useCartContext } from '../context/CartContext';
+import { useProductContext } from '../context/ProductContext';
+import { Loader } from '../components/Loader';
 
 export function ProductDetails() {
     const { id } = useParams();
     const {isLogin}=useAuthContext();
     const {addItemToCart}=useCartContext();
+    const {loading,setLoading}=useProductContext();
     const {wishlist,addProductTowishlist,deleteProductFromWishlist}=useWishlistContext();
     const [product, setProduct] = useState([]);
     const [isFavorite, setFavorite] = useState(wishlist.some((item) => item._id === product._id));
@@ -22,13 +25,17 @@ export function ProductDetails() {
     const navigate=useNavigate();
 
     const getProductFromId = async (id) => {
+        setLoading(true);
         const res = await fetchProduct(id);
         if (res.success) {
             setProduct(() => res.product);
+          
         }
         else {
+           
             toast("Something went Wrong");
         }
+        setLoading(false);
     }
 
     const addToCartClickHandler=async(e)=>{
@@ -89,7 +96,8 @@ export function ProductDetails() {
 
     return (
         <div className="productPage">
-            <div className="productDetailsCard">
+            {loading && <Loader/>}
+            {!loading && <div className="productDetailsCard">
                 <div className="productImage">
                     <img src={product?.imageURL} alt="productImage" />
                 </div>
@@ -126,10 +134,7 @@ export function ProductDetails() {
 
 
             </div>
-
-
-
-
+        }
         </div>
     )
 }

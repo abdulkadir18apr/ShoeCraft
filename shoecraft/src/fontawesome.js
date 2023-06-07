@@ -3,6 +3,7 @@ import { faArrowRight, faCartShopping  } from  "@fortawesome/free-solid-svg-icon
 import { faHeart  } from  "@fortawesome/free-solid-svg-icons";
 import { faStore  } from  "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass  } from  "@fortawesome/free-solid-svg-icons";
+import { faUser  } from  "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft  } from  "@fortawesome/free-solid-svg-icons";
 import { faStar  } from  "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar  } from  "@fortawesome/free-regular-svg-icons";
@@ -35,3 +36,4 @@ library.add(faHeart);
 library.add(farHeart);
 library.add(faCirclePlus);
 library.add(faCircleMinus);
+library.add(faUser);

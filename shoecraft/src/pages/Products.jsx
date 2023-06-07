@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 
 export  function Products() {
     const {productState,setCurrentPage,filteredProducts}=useProductContext();
-    const {isLogin,userName}=useAuthContext();
+    const {isLogin}=useAuthContext();
     const [totalPages,startPageIndex,endPageIndex,currenPageIndex,displayPage]=usePagination(8,filteredProducts.length);
 
 
@@ -39,7 +39,7 @@ export  function Products() {
     useEffect(()=>{
         if(isLogin){
            
-            toast(`Welcome ${userName}`);
+            toast(`Welcome  ${localStorage.getItem('userName')} `);
         }
           //eslint-disable-next-line react-hooks/exhaustive-deps
     },[isLogin])

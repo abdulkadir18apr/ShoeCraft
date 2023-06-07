@@ -1,0 +1,14 @@
+.orderDetails{
+    max-width: 25rem;
+    border-radius: 10px;;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: #f9fafb;
+
+}
+.delivery{
+    text-align: left;
+    padding: 1rem 1rem;
+}
+.delivery-address{
+    padding:0rem 3rem;
+}

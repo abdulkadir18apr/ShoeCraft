@@ -9,7 +9,7 @@ export const  ProductReducer=(state,action)=>{
             for(let i=payload.startIndex;i<=payload.endIndex;i++){
                 currentPageProducts.push(payload.filteredProducts[i]);
             }
-            return {...state,currentPage:currentPageProducts,loading:false};
+            return {...state,currentPage:currentPageProducts};
         case 'addCategoryFilter':
             return {...state,filters:{...state.filters,category:[...state.filters.category,payload]}};
         case 'removeCategoryFilter':
@@ -28,6 +28,8 @@ export const  ProductReducer=(state,action)=>{
             return {...state,filters:{...state.filters,searchQuery:payload}}
         case "clearFilters":
             return {...state,filters:{category:[],sort:-1,rating:-1,footwearType:[],price:250,searchQuery:""}}
+        case "setLoading":
+            return {...state,loading:payload}
         default:
             return state;
     }

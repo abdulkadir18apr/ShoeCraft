@@ -15,12 +15,16 @@ import rightArrow from "./img/rightArrow.png"
 
 import "./css/catalogue.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useProductContext } from '../context/ProductContext'
 
 
 export  function Catalogue () {
-    const [active,setActive]=useState(1)
+
+
+    const [active,setActive]=useState(1);
+    const {productDispatch,productState}=useProductContext();
     const HandleForwardClick=()=>{
-        active===3?setActive(1):setActive((prev)=>prev+1)
+        active===2?setActive(1):setActive((prev)=>prev+1)
     }
     const HandleBackwardClick=()=>{
         active===1?setActive(1):setActive((prev)=>prev-1)
@@ -30,19 +34,19 @@ export  function Catalogue () {
             <FontAwesomeIcon icon="fa-solid fa-arrow-left" size="2xl" className='arrowIcons left' onClick={HandleBackwardClick}/>
         <div className={`screen ${active===1 && "active"}`} >
       
-        <NavLink>
+        <NavLink to="/products" onClick={()=>productDispatch({type:"addCategoryFilter",payload:"MEN"})}>
         <div className='collection'>
         <img src={men}  alt="shoe"/>
         <p>Men's Collection</p>
         </div>
         </NavLink>
-        <NavLink>
+        <NavLink to="/products" onClick={()=>productDispatch({type:"addCategoryFilter",payload:"WOMEN"})}>
         <div className='collection'>
         <img src={lady}  alt="shoe"/>
         <p>Ladies Collection</p>
         </div>
         </NavLink>
-        <NavLink>
+        <NavLink to="/products" onClick={()=>productDispatch({type:"addCategoryFilter",payload:"KIDS"})}>
         <div className='collection'>
         <img src={kid}  alt="shoe"/>
         <p>Kid's Collection</p>
@@ -50,50 +54,27 @@ export  function Catalogue () {
         </NavLink>
         </div>
       
+       
         <div className={`screen ${active===2 && "active"}`}>
 
-        <NavLink>
-        <div className='collection'>
-        <img src={slipper}  alt="shoe"/>
-        <p>Slippers</p>
-        </div>
-        </NavLink>
-
-        <NavLink>
-        <div className='collection'>
-        <img src={sandle}  alt="shoe"/>
-        <p>Sandles</p>
-        </div>
-        </NavLink>
-
-        <NavLink>
-        <div className='collection'>
-        <img src={shoes}  alt="shoe"/>
-        <p>Shoes</p>
-        </div>
-        </NavLink>
-        </div>
-
-        <div className={`screen ${active===3 && "active"}`}>
-
-        <NavLink>
+        <NavLink to="/products" onClick={()=>productDispatch({type:"addFootwearTypeFilter",payload:"CASUAL"})}>
         <div className='collection'>
         <img src={casual}  alt="shoe"/>
         <p>Casuals</p>
         </div>
         </NavLink>
 
-        <NavLink>
+        <NavLink to="/products" onClick={()=>productDispatch({type:"addFootwearTypeFilter",payload:"FORMAL"})}>
         <div className='collection'>
         <img src={formal}  alt="shoe"/>
         <p>Formals</p>
         </div>
         </NavLink>
 
-        <NavLink>
+        <NavLink to="/products" onClick={()=>productDispatch({type:"addFootwearTypeFilter",payload:"RUNNING"})}>
         <div className='collection'>
         <img src={running}  alt="shoe"/>
-        <p>Sneakers</p>
+        <p>Running</p>
         </div>
         </NavLink>
         </div>

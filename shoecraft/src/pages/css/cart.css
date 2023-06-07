@@ -13,23 +13,25 @@
 }
 .cart__items{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     flex-wrap: wrap-reverse;
     gap:2rem;
     align-items: center;
     grid-area: item;
-
 }
 .cart__bill{
     grid-area: bill;
     padding: 2rem;
+    max-width: 20rem;
 
 }
 
+
 @media screen and (min-width:678px){
     .cart-container{
-        grid-template-areas: "header header header"
-        "item item bill";
+        grid-template-areas: "header  header"
+        "item  bill";
 grid-column-gap:2rem ;
 
     }

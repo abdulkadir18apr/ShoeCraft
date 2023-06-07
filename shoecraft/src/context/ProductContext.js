@@ -21,6 +21,7 @@ export const ProductsProvider=({children})=>{
         const json=await getProducts();
         if(json.success){
             productDispatch({type:'setProducts',payload:json.products});
+            setLoading(false);
         }
         else{
             console.log(json);
@@ -28,7 +29,11 @@ export const ProductsProvider=({children})=>{
 
     }
     const setCurrentPage=(startIndex,endIndex)=>{
-        productDispatch({type:'setCurrentPage',payload:{startIndex,endIndex,filteredProducts}})
+        productDispatch({type:'setCurrentPage',payload:{startIndex,endIndex,filteredProducts}});
+    }
+
+    const setLoading=(isLoading)=>{
+        productDispatch({type:"setLoading",payload:isLoading})
     }
 
     useEffect(()=>{
@@ -36,7 +41,7 @@ export const ProductsProvider=({children})=>{
     },[])
 
     return(
-        <ProductContext.Provider value={{productState,setCurrentPage,productDispatch,filteredProducts}}>
+        <ProductContext.Provider value={{productState,setCurrentPage,productDispatch,filteredProducts,loading:productState.loading,setLoading}}>
             {children}
         </ProductContext.Provider>
     )

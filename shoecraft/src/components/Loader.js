@@ -3,6 +3,11 @@ import "./css/loader.css"
 
 export  function Loader() {
   return (
-    <span class="loader"></span>
+    <div className="dots-loader">
+    <span className="dot"></span>
+    <span className="dot"></span>
+    <span className="dot"></span>
+    <span className="dot"></span>
+  </div>
   )
 }

@@ -1,0 +1,22 @@
+.userProfile{
+    border:2px solid #4C4C6D;
+    width: 100%;
+    padding: 1rem;
+
+}
+.userProfile p{
+    font-size: larger;
+    font-weight: 600;
+}
+.userProfile p span{
+    color:gray
+}
+.userProfile button{
+    background-color:#4C4C6D;
+    padding: 8px;
+    border:none;
+    font-weight: 800;
+    cursor:pointer;
+    color:white
+
+}

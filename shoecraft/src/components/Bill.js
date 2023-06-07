@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 
 import "./css/bill.css"
@@ -38,6 +39,8 @@ export  function Bill() {
             <div className="bill__price"></div>
             <div className="bill__total">${cartTotal}</div>
         </div>
+
+        <NavLink to="/checkout" className="checkoutBtn">CheckOut</NavLink>
 
     </div>
   )
