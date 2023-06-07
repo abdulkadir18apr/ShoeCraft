@@ -12,7 +12,7 @@ import { Loader } from "../components/Loader";
 
 export const Login=({isLogin})=>{
 
-    const [credentials,setCredentials]=useState({});
+    const [credentials,setCredentials]=useState({email:"Ali@gmail.com",password:"123456789"});
     const {loginUser}=useAuthContext();
     const {loading,setLoading}=useProductContext();
     const location=useLocation();
@@ -73,7 +73,7 @@ export const Login=({isLogin})=>{
                     </label>
                     <input type="password" name="password" id="password" required value={credentials?.password}  onChange={userInputChangeHandler} disabled={loading}/>
                     <button className="loginBtn" onClick={loginClickHandler} disabled={loading}>{isLogin?"Login":"Signup"}</button>
-                    <button className="loginBtn" disabled={isLogin?false:true}>Login As a Guest</button>
+                    <button className="loginBtn" disabled={isLogin?false:true} onClick={loginClickHandler}>Login As a Guest</button>
                     <p>{isLogin?"Don't have an account":"Already have a account ?"} <NavLink to={isLogin?"../signup":"../login"}>
                         {isLogin?"Sign-up":"Login"}</NavLink></p>
                 </form>
